@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>情報セキュリティ方針｜株式会社G-Trust</title>
+<meta name="description" content="株式会社G-Trustの情報セキュリティ基本方針（セキュリティ対策自己宣言）。お客様の情報資産を適切に保護するための取り組みを公開しています。">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0b3a66">
+<link rel="canonical" href="https://g-trust.gtgroup.co.jp/security.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b3a66'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%2367e8f9'%3E%E2%9D%84%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;--bg-sub:#f1f7fb;--ink:#0f2942;--ink-sub:#5a6b7b;
+  --primary:#0b3a66;--brand:#06b6d4;--brand-dark:#0891b2;--accent:#ff6a3d;
+  --line:#e4edf3;--grad-brand:linear-gradient(135deg,#06b6d4,#0b3a66);
+  --shadow:0 12px 32px rgba(11,58,102,.10);--radius:20px;--maxw:880px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Segoe UI",sans-serif;color:var(--ink);background:var(--bg-sub);line-height:1.95;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--brand-dark);text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+img{display:block;max-width:100%}
+
+/* ヘッダー */
+.header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+.logo{display:flex;align-items:center;gap:11px}
+.logo .mark img{height:44px;width:auto}
+.logo-text b{font-family:"Poppins",sans-serif;font-size:18px;color:var(--primary);display:block;line-height:1.15}
+.logo-text span{font-size:10.5px;letter-spacing:.14em;color:var(--ink-sub);font-family:"Poppins",sans-serif}
+.back{font-size:14px;font-weight:700;color:var(--primary);border:1.5px solid var(--line);padding:9px 18px;border-radius:999px;transition:background .2s,transform .2s}
+.back:hover{background:#fff;transform:translateY(-2px)}
+
+/* ヒーロー帯 */
+.page-hero{background:var(--grad-brand);color:#fff;padding:54px 0 60px;text-align:center}
+.page-hero .eyebrow{font-family:"Poppins",sans-serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.page-hero h1{font-size:clamp(26px,5vw,40px);font-weight:800;margin-top:10px}
+.page-hero p{margin-top:14px;font-size:15px;opacity:.9}
+
+/* 本文カード */
+.doc{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:clamp(28px,5vw,52px);margin:-34px auto 0;position:relative;z-index:1}
+.doc .intro{color:var(--ink-sub);margin-bottom:34px}
+.doc h2{font-size:20px;font-weight:800;color:var(--primary);margin:34px 0 12px;padding-left:14px;border-left:5px solid var(--brand);line-height:1.4}
+.doc h2:first-of-type{margin-top:0}
+.doc p{margin-bottom:12px}
+.doc ol{margin:0 0 12px 1.4em}
+.doc ol li{margin-bottom:10px}
+.doc .sign{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-sub);line-height:2}
+.doc .sign b{color:var(--ink)}
+
+/* SECURITY ACTION バッジ */
+.sa-box{display:flex;align-items:center;gap:22px;background:var(--bg-sub);border-radius:16px;padding:22px 26px;margin-top:30px;flex-wrap:wrap}
+.sa-box img{height:96px;width:auto;flex:none}
+.sa-box .t b{display:block;font-size:16px;color:var(--primary);margin-bottom:6px}
+.sa-box .t p{font-size:13.5px;color:var(--ink-sub);margin:0}
+
+/* フッター */
+.footer{background:#0a2236;color:rgba(255,255,255,.7);text-align:center;padding:30px 0;margin-top:60px;font-size:13px}
+.footer a{color:#67e8f9}
+@media(max-width:560px){
+  .logo-text{display:none}
+  .sa-box{justify-content:center;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo" aria-label="株式会社G-Trust トップへ">
+      <span class="mark"><img src="assets/logo-emblem.png" alt="株式会社G-Trust ロゴ"></span>
+      <span class="logo-text"><b>株式会社 G-Trust</b><span>Air Conditioning &amp; Cleaning</span></span>
+    </a>
+    <a href="index.html" class="back">← トップへ戻る</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Information Security Policy</span>
+    <h1>情報セキュリティ基本方針</h1>
+    <p>セキュリティ対策自己宣言（SECURITY ACTION 二つ星）</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="doc">
+    <p class="intro">株式会社G-Trust（以下「当社」）は、空調・エアコン設備工事やハウスクリーニング事業を通じてお客様や取引先の皆様から多くの情報をお預かりしております。これらの情報資産を事故や災害、犯罪などの脅威から保護することが、当社の社会的責務であると考え、以下の方針に基づき全社で情報セキュリティに取り組みます。</p>
+
+    <h2>1. 経営者の責任</h2>
+    <p>当社は、経営者主導で組織的かつ継続的に情報セキュリティの改善・向上に努めます。</p>
+
+    <h2>2. 社内体制の整備</h2>
+    <p>当社は、情報セキュリティの維持・改善のために組織体制を整備し、情報セキュリティ対策を社内の正式な規則として定めます。</p>
+
+    <h2>3. 従業員の取組み</h2>
+    <p>当社の従業員は、情報セキュリティのために必要とされる知識、技術を習得し、情報セキュリティへの取り組みを確かなものにします。</p>
+
+    <h2>4. 法令及び契約上の要求事項の遵守</h2>
+    <p>当社は、情報セキュリティに関わる法令、規制、規範、契約上の義務を遵守するとともに、お客様の期待に応えます。</p>
+
+    <h2>5. 違反及び事故への対応</h2>
+    <p>当社は、情報セキュリティに関わる法令違反、契約違反及び事故が発生した場合には適切に対処し、再発防止に努めます。</p>
+
+    <div class="sa-box">
+      <img src="assets/security-action.jpg" alt="SECURITY ACTION セキュリティ対策自己宣言 二つ星">
+      <div class="t">
+        <b>SECURITY ACTION（二つ星）を自己宣言しています</b>
+        <p>「SECURITY ACTION」は、中小企業自らが情報セキュリティ対策に取り組むことを自己宣言する、独立行政法人情報処理推進機構（IPA）の制度です。当社は二つ星（★★）を宣言しています。</p>
+      </div>
+    </div>
+
+    <div class="sign">
+      制定日：2026年4月27日<br>
+      <b>株式会社G-Trust</b><br>
+      代表取締役　大木 尚人
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    © 2026 株式会社G-Trust All Rights Reserved.　|　<a href="index.html">トップページへ</a>
+  </div>
+</footer>
+
+</body>
+</html>

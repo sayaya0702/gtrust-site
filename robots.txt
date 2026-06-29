@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# 本番ドメインに置き換えてください
+Sitemap: https://g-trust.gtgroup.co.jp/sitemap.xml
