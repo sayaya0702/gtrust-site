@@ -377,6 +377,8 @@ img{max-width:100%;display:block}
 .blog-thumb.tb-news{background:linear-gradient(135deg,#0b3a66,#0c2c4d)}
 .blog-thumb.tb-ac{background:linear-gradient(135deg,#06b6d4,#0b3a66)}
 .blog-thumb.tb-eco{background:linear-gradient(135deg,#16b981,#0891b2)}
+.blog-thumb.tb-logo{background:linear-gradient(135deg,#eef6fc,#d2e7f4)}
+.blog-thumb.tb-logo img{height:92px;width:auto}
 .blog-body{padding:22px 24px 26px}
 .blog-meta{display:flex;align-items:center;gap:9px;margin-bottom:12px;flex-wrap:wrap}
 .blog-meta time{font-size:12.5px;color:var(--ink-sub);font-family:"Poppins",sans-serif}
@@ -748,7 +750,7 @@ img{max-width:100%;display:block}
     </div>
     <div class="blog-grid">
       <a class="blog-card reveal" href="blog-renewal.html">
-        <div class="blog-thumb tb-news"><span>📢</span></div>
+        <div class="blog-thumb tb-logo"><img src="assets/logo-emblem.png" alt="株式会社G-Trust"></div>
         <div class="blog-body">
           <div class="blog-meta"><span class="tag-new">NEW</span><span class="chip">お知らせ</span><time>2026.05.14</time></div>
           <h3>ホームページをリニューアルしました</h3>
@@ -813,11 +815,16 @@ img{max-width:100%;display:block}
       <form class="form reveal" onsubmit="return submitForm(event)">
         <h3>お見積もり・ご相談フォーム</h3>
         <p class="sub">下記フォームよりお気軽にお問い合わせください。</p>
-        <div class="field"><label>お名前<span class="req">必須</span></label><input type="text" required placeholder="山田 太郎"></div>
-        <div class="field"><label>電話番号<span class="req">必須</span></label><input type="tel" required placeholder="090-1234-5678"></div>
-        <div class="field"><label>メールアドレス</label><input type="email" placeholder="example@email.com"></div>
+        <!-- ▼ Web3Forms：web3forms.com で gtrust.front@gmail.com を登録して取得したアクセスキーに置き換えてください -->
+        <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="【ホームページ】お問い合わせ・お見積もり">
+        <input type="hidden" name="from_name" value="株式会社G-Trust 公式サイト">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+        <div class="field"><label>お名前<span class="req">必須</span></label><input type="text" name="お名前" required placeholder="山田 太郎"></div>
+        <div class="field"><label>電話番号<span class="req">必須</span></label><input type="tel" name="電話番号" required placeholder="090-1234-5678"></div>
+        <div class="field"><label>メールアドレス</label><input type="email" name="email" placeholder="example@email.com"></div>
         <div class="field"><label>ご相談内容<span class="req">必須</span></label>
-          <select required>
+          <select name="ご相談内容" required>
             <option value="">選択してください</option>
             <option>エアコン取付・移設</option>
             <option>エアコン修理・故障診断</option>
@@ -827,7 +834,7 @@ img{max-width:100%;display:block}
             <option>その他</option>
           </select>
         </div>
-        <div class="field"><label>お問い合わせ詳細</label><textarea placeholder="機種・症状・ご希望日などをご記入ください"></textarea></div>
+        <div class="field"><label>お問い合わせ詳細</label><textarea name="お問い合わせ詳細" placeholder="機種・症状・ご希望日などをご記入ください"></textarea></div>
         <div class="consent">
           <label class="consent-label">
             <input type="checkbox" required>
@@ -939,11 +946,31 @@ const cio=new IntersectionObserver((es)=>{
 },{threshold:.5});
 counters.forEach(c=>cio.observe(c));
 
-/* フォーム（デモ） */
-function submitForm(e){
+/* お問い合わせフォーム（Web3Forms 経由でメール送信） */
+async function submitForm(e){
   e.preventDefault();
-  alert('お問い合わせありがとうございます。\n内容を確認のうえ、担当者よりご連絡いたします。\n\n※これはデモ送信です。実運用ではメール送信処理を実装してください。');
-  e.target.reset();
+  const form=e.target;
+  const btn=form.querySelector('button[type=submit]');
+  const note=form.querySelector('.form-note');
+  const old=btn.textContent;
+  btn.disabled=true; btn.textContent='送信中...';
+  try{
+    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)});
+    const json=await res.json();
+    if(json.success){
+      form.reset();
+      note.textContent='✅ 送信しました。担当者より折り返しご連絡いたします。';
+      note.style.color='#16b981';
+    }else{
+      note.textContent='送信に失敗しました。お手数ですが 048-711-8395 までお電話ください。';
+      note.style.color='#ff6a3d';
+    }
+  }catch(err){
+    note.textContent='送信に失敗しました。お手数ですが 048-711-8395 までお電話ください。';
+    note.style.color='#ff6a3d';
+  }finally{
+    btn.disabled=false; btn.textContent=old;
+  }
   return false;
 }
 </script>
