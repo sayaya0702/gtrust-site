@@ -355,10 +355,11 @@ img{max-width:100%;display:block}
 .case-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
 .case-visual{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg)}
 .ba{display:grid;grid-template-columns:1fr 1fr}
-.ba .pane{aspect-ratio:4/3;display:grid;place-items:center;position:relative;color:#fff;text-align:center;font-weight:700}
+.ba .pane{aspect-ratio:3/4;display:grid;place-items:center;position:relative;color:#fff;text-align:center;font-weight:700;overflow:hidden}
+.ba .pane img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ba .before{background:linear-gradient(135deg,#7d8a96,#4a5763)}
 .ba .after{background:linear-gradient(135deg,#06b6d4,#0b3a66)}
-.ba .tag{position:absolute;top:14px;left:14px;background:rgba(0,0,0,.45);padding:5px 14px;border-radius:999px;font-size:12px;font-family:"Poppins",sans-serif;letter-spacing:.1em}
+.ba .tag{position:absolute;top:14px;left:14px;z-index:2;background:rgba(0,0,0,.6);padding:5px 14px;border-radius:999px;font-size:12px;font-family:"Poppins",sans-serif;letter-spacing:.1em}
 .ba .pane .ill{font-size:60px;opacity:.9}
 .case-body .meta{display:flex;gap:10px;align-items:center;margin-bottom:14px}
 .case-body .chip{background:var(--bg-sub);color:var(--brand-dark);font-size:12.5px;font-weight:700;padding:5px 14px;border-radius:999px}
@@ -444,8 +445,8 @@ img{max-width:100%;display:block}
 .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:44px}
 .footer .logo-text b{color:#fff}
 .footer .logo-text span{color:rgba(255,255,255,.5)}
-.footer-logo .mark{height:auto;background:#fff;border-radius:9px;padding:6px 8px}
-.footer-logo .mark img{height:42px}
+.footer-logo .mark{height:auto;background:transparent;padding:0}
+.footer-logo .mark img{height:46px}
 .footer-badges{display:flex;align-items:center;gap:12px;margin-top:22px}
 .footer-badges img{height:46px;width:auto;background:#fff;border-radius:6px;padding:4px;display:block;transition:transform .2s}
 .footer-badges a:hover img{transform:translateY(-2px)}
@@ -724,8 +725,8 @@ img{max-width:100%;display:block}
     <div class="case-grid">
       <div class="case-visual reveal">
         <div class="ba">
-          <div class="pane before"><span class="tag">BEFORE</span><span class="ill">🛁</span></div>
-          <div class="pane after"><span class="tag">AFTER</span><span class="ill">✨</span></div>
+          <div class="pane before"><span class="tag">BEFORE</span><img src="assets/works-bathroom-before.jpg" alt="浴室・トイレ クリーニング前" loading="lazy"></div>
+          <div class="pane after"><span class="tag">AFTER</span><img src="assets/works-bathroom-after.jpg" alt="浴室・トイレ クリーニング後" loading="lazy"></div>
         </div>
       </div>
       <div class="case-body reveal">
@@ -752,22 +753,6 @@ img{max-width:100%;display:block}
           <div class="blog-meta"><span class="tag-new">NEW</span><span class="chip">お知らせ</span><time>2026.05.14</time></div>
           <h3>ホームページをリニューアルしました</h3>
           <p>このたび、株式会社G-Trustのホームページをリニューアルいたしました。今後ともよろしくお願いいたします。</p>
-        </div>
-      </a>
-      <a class="blog-card reveal" href="blog-aircon-cleaning-frequency.html">
-        <div class="blog-thumb tb-ac"><span>❄️</span></div>
-        <div class="blog-body">
-          <div class="blog-meta"><span class="chip">お役立ち</span><time>2026.06.01</time></div>
-          <h3>エアコンクリーニングの最適な頻度とは？</h3>
-          <p>使用頻度や設置環境ごとに、エアコン内部を清潔に保つためのお掃除のタイミングをプロが解説します。</p>
-        </div>
-      </a>
-      <a class="blog-card reveal" href="blog-energy-saving.html">
-        <div class="blog-thumb tb-eco"><span>💡</span></div>
-        <div class="blog-body">
-          <div class="blog-meta"><span class="chip">お役立ち</span><time>2026.06.15</time></div>
-          <h3>業務用空調の省エネ・コスト削減のポイント</h3>
-          <p>オフィスや店舗の電気代を抑える、業務用エアコンの運用・メンテナンスのコツをご紹介します。</p>
         </div>
       </a>
     </div>

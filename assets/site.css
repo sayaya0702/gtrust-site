@@ -112,8 +112,8 @@ img{max-width:100%;display:block}
 .footer{background:#0a2236;color:rgba(255,255,255,.72);padding:64px 0 0}
 .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:44px}
 .footer-logo{display:flex;align-items:center;gap:11px}
-.footer-logo .mark{background:#fff;border-radius:9px;padding:6px 8px}
-.footer-logo .mark img{height:42px;width:auto}
+.footer-logo .mark{background:transparent;padding:0}
+.footer-logo .mark img{height:46px;width:auto}
 .footer .logo-text b{color:#fff}
 .footer .logo-text>span{color:rgba(255,255,255,.5)}
 .footer-about{margin-top:20px;font-size:14px;max-width:34em}
