@@ -18,22 +18,24 @@
   addEventListener('load',showIfInView);
   setTimeout(function(){reveals.forEach(function(el){el.classList.add('in')})},1800);
 
-  /* 最新記事に自動で NEW バッジを付与（日付が最新のカード） */
-  window.markNewestPost=function(cards, metaSel){
-    var newest=null, newestT=-1;
-    cards.forEach(function(c){
-      var t=c.querySelector('time'); if(!t)return;
-      var d=Date.parse((t.getAttribute('datetime')||t.textContent).trim().replace(/[.\/]/g,'-'));
-      if(!isNaN(d)&&d>newestT){newestT=d;newest=c;}
+  /* 記事カードを日付の新しい順に並べ替え＋最新に NEW バッジを付与 */
+  window.processPostList=function(container, cardSel, metaSel){
+    if(!container)return;
+    var cards=[].slice.call(container.querySelectorAll(cardSel));
+    var items=cards.map(function(c){
+      var t=c.querySelector('time');
+      var d=t?Date.parse((t.getAttribute('datetime')||t.textContent).trim().replace(/[.\/]/g,'-')):NaN;
+      return {c:c, d:isNaN(d)?-Infinity:d};
     });
-    if(newest){
-      var meta=newest.querySelector(metaSel);
-      if(meta && !meta.querySelector('.tag-new')){
+    items.sort(function(a,b){return b.d-a.d;});
+    items.forEach(function(x){container.appendChild(x.c);});
+    if(items.length){
+      var m=items[0].c.querySelector(metaSel);
+      if(m && !m.querySelector('.tag-new')){
         var b=document.createElement('span'); b.className='tag-new'; b.textContent='NEW';
-        meta.insertBefore(b, meta.firstChild);
+        m.insertBefore(b, m.firstChild);
       }
     }
   };
-  var list=document.querySelector('.bloglist');
-  if(list){ markNewestPost([].slice.call(list.querySelectorAll('a')), '.m'); }
+  processPostList(document.querySelector('.bloglist'), 'a', '.m');
 })();

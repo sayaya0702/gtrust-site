@@ -749,20 +749,20 @@ img{max-width:100%;display:block}
       <p>会社からのお知らせや、お役立ち情報をお届けします。</p>
     </div>
     <div class="blog-grid">
-      <a class="blog-card reveal" href="blog-renewal.html">
-        <div class="blog-thumb tb-logo"><img src="assets/logo-emblem.png" alt="株式会社G-Trust"></div>
-        <div class="blog-body">
-          <div class="blog-meta"><span class="chip">お知らせ</span><time>2026.05.14</time></div>
-          <h3>ホームページをリニューアルしました</h3>
-          <p>このたび、株式会社G-Trustのホームページをリニューアルいたしました。今後ともよろしくお願いいたします。</p>
-        </div>
-      </a>
       <a class="blog-card reveal" href="blog-security-action-2.html">
         <div class="blog-thumb tb-logo"><img src="assets/security-action-2star.png" alt="SECURITY ACTION 二つ星"></div>
         <div class="blog-body">
           <div class="blog-meta"><span class="chip">お知らせ</span><time>2026.05.19</time></div>
           <h3>セキュリティアクション2つ星宣言完了</h3>
           <p>IPAが推進する「SECURITY ACTION」の2つ星宣言を完了しました。</p>
+        </div>
+      </a>
+      <a class="blog-card reveal" href="blog-renewal.html">
+        <div class="blog-thumb tb-logo"><img src="assets/logo-emblem.png" alt="株式会社G-Trust"></div>
+        <div class="blog-body">
+          <div class="blog-meta"><span class="chip">お知らせ</span><time>2026.05.14</time></div>
+          <h3>ホームページをリニューアルしました</h3>
+          <p>このたび、株式会社G-Trustのホームページをリニューアルいたしました。今後ともよろしくお願いいたします。</p>
         </div>
       </a>
       <a class="blog-card reveal" href="blog-partnership.html">
@@ -968,12 +968,14 @@ const cio=new IntersectionObserver((es)=>{
 },{threshold:.5});
 counters.forEach(c=>cio.observe(c));
 
-/* 最新記事に自動で NEW バッジを付与（トップのブログ欄） */
+/* トップのブログ欄：新しい順に並べ替え＋最新に NEW バッジ */
 (function(){
-  const cards=[...document.querySelectorAll('#blog .blog-card')];
-  let newest=null,nt=-1;
-  cards.forEach(c=>{const t=c.querySelector('time');if(!t)return;const d=Date.parse((t.getAttribute('datetime')||t.textContent).trim().replace(/[.\/]/g,'-'));if(!isNaN(d)&&d>nt){nt=d;newest=c;}});
-  if(newest){const m=newest.querySelector('.blog-meta');if(m&&!m.querySelector('.tag-new')){const b=document.createElement('span');b.className='tag-new';b.textContent='NEW';m.insertBefore(b,m.firstChild);}}
+  const grid=document.querySelector('#blog .blog-grid');
+  if(!grid)return;
+  const items=[...grid.querySelectorAll('.blog-card')].map(c=>{const t=c.querySelector('time');const d=t?Date.parse((t.getAttribute('datetime')||t.textContent).trim().replace(/[.\/]/g,'-')):NaN;return{c,d:isNaN(d)?-Infinity:d};});
+  items.sort((a,b)=>b.d-a.d);
+  items.forEach(x=>grid.appendChild(x.c));
+  if(items.length){const m=items[0].c.querySelector('.blog-meta');if(m&&!m.querySelector('.tag-new')){const b=document.createElement('span');b.className='tag-new';b.textContent='NEW';m.insertBefore(b,m.firstChild);}}
 })();
 
 /* お問い合わせフォーム（Web3Forms 経由でメール送信） */
