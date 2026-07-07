@@ -17,4 +17,23 @@
   addEventListener('scroll',showIfInView,{passive:true});
   addEventListener('load',showIfInView);
   setTimeout(function(){reveals.forEach(function(el){el.classList.add('in')})},1800);
+
+  /* 最新記事に自動で NEW バッジを付与（日付が最新のカード） */
+  window.markNewestPost=function(cards, metaSel){
+    var newest=null, newestT=-1;
+    cards.forEach(function(c){
+      var t=c.querySelector('time'); if(!t)return;
+      var d=Date.parse((t.getAttribute('datetime')||t.textContent).trim().replace(/[.\/]/g,'-'));
+      if(!isNaN(d)&&d>newestT){newestT=d;newest=c;}
+    });
+    if(newest){
+      var meta=newest.querySelector(metaSel);
+      if(meta && !meta.querySelector('.tag-new')){
+        var b=document.createElement('span'); b.className='tag-new'; b.textContent='NEW';
+        meta.insertBefore(b, meta.firstChild);
+      }
+    }
+  };
+  var list=document.querySelector('.bloglist');
+  if(list){ markNewestPost([].slice.call(list.querySelectorAll('a')), '.m'); }
 })();
