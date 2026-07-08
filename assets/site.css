@@ -82,8 +82,8 @@ img{max-width:100%;display:block}
 .prose h3{font-size:20px;font-weight:700;margin:34px 0 12px}
 .prose p{margin-bottom:16px}
 .prose ul{list-style:none;display:grid;gap:12px;margin:18px 0}
-.prose ul li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
-.prose ul li::before{content:"✓";color:var(--success);font-weight:800;flex:none}
+.prose ul li{position:relative;padding-left:28px;font-size:16px;line-height:1.75}
+.prose ul li::before{content:"✓";color:var(--success);font-weight:800;position:absolute;left:0;top:0}
 
 /* 機能カード（料金目安・対応内容など） */
 .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px}
