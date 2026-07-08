@@ -987,7 +987,12 @@ async function submitForm(e){
   const old=btn.textContent;
   btn.disabled=true; btn.textContent='送信中...';
   try{
-    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)});
+    const data=Object.fromEntries(new FormData(form).entries());
+    const res=await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json; charset=utf-8','Accept':'application/json'},
+      body:JSON.stringify(data)
+    });
     const json=await res.json();
     if(json.success){
       form.reset();
